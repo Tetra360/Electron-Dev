@@ -1,0 +1,60 @@
+{
+	// -------------------------
+	// エディタ全般
+	// -------------------------
+
+	// ファイルを自動保存（遅延付き）
+	"files.autoSave": "afterDelay",
+
+	// 保存時に自動フォーマット
+	"editor.formatOnSave": true,
+
+	// 保存時に ESLint で自動修正 + Import 整理
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "explicit"
+	},
+
+	// インデント設定
+	"editor.tabSize": 2,
+	"editor.insertSpaces": true,
+
+	// 末尾の余分なスペースを保存時に削除
+	"files.trimTrailingWhitespace": true,
+
+	// ファイル末尾に改行を追加
+	"files.insertFinalNewline": true,
+
+	// 不要な改行を削除
+	"files.trimFinalNewlines": true,
+
+	// -------------------------
+	// フォーマッタ設定
+	// -------------------------
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// -------------------------
+	// Tailwind CSS 補完対応
+	// -------------------------
+	"tailwindCSS.experimental.classRegex": [
+		"clsx\\(([^)]*)\\)",
+		"cva\\(([^)]*)\\)",
+		"cn\\(([^)]*)\\)"
+	]
+}

@@ -1,0 +1,23 @@
+[core]
+    # 改行コードの自動変換を無効化（LF統一）
+    autocrlf = false
+    # 改行コードの安全性チェックを有効化
+    safecrlf = true
+
+[init]
+    # デフォルトブランチ名をmainに設定
+    defaultBranch = main
+
+[push]
+    # プッシュのデフォルト動作をsimpleに設定
+    default = simple
+
+[alias]
+    # よく使うコマンドの短縮形を定義
+    st = status          # git status
+    co = checkout        # git checkout
+    br = branch          # git branch
+    ci = commit          # git commit
+    unstage = reset HEAD --  # ステージングの取り消し
+    last = log -1 HEAD   # 最新のコミット情報を表示
+    visual = !gitk      # Git GUIを起動

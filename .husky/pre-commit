@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+echo "✅ pre-commit hook is running!"
+npx lint-staged
