@@ -1,30 +1,80 @@
-# React + TypeScript + Vite
+# Electron + React + TypeScript + Vite テンプレート
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+このリポジトリは、**Electron + React + TypeScript + Vite** をベースにしたデスクトップアプリケーション開発環境の構築済みテンプレートです。
 
-Currently, two official plugins are available:
+## 技術スタック
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Electron + Vite**: デスクトップアプリ基盤
+- **React**: UI ライブラリ
+- **TypeScript**: 型安全な開発
+- **Tailwind CSS**: ユーティリティファーストなスタイル
+- **shadcn/ui**: コンポーネントライブラリ
+- **ESLint + Prettier**: コードフォーマッタ
+- **Husky + lint-staged**: コミット時の自動フォーマット
 
-## Expanding the ESLint configuration
+## 主な機能
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- 高速開発: Vite によるホットリロード
+- クロスプラットフォーム対応: Electron による Windows / macOS / Linux
+- 開発効率の向上: Tailwind + shadcn/ui による UI 開発効率化
+- チーム開発に最適: ESLint + Prettier + Husky による規約統一
+- 型安全: TypeScript による型チェック
+- 自動フォーマット: 保存時・コミット時の自動コードフォーマット
 
-- Configure the top-level `parserOptions` property like this:
+## セットアップ
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### 前提条件
+
+- Node.js (最新版推奨、LTSでも可)
+
+### インストール
+
+```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバー起動
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 利用可能なコマンド
+
+```bash
+# 開発サーバー起動
+npm run dev
+
+# 本番ビルド
+npm run build
+
+# ビルド結果のプレビュー
+npm run preview
+```
+
+## 詳細な環境構築手順
+
+詳細な環境構築手順については、[SETUP.md](./SETUP.md) を参照してください。
+
+## UI コンポーネント
+
+このテンプレートには以下の shadcn/ui コンポーネントが含まれています：
+
+- Button
+- Input
+- Select
+
+追加のコンポーネントが必要な場合は、shadcn/ui の公式ドキュメントを参照してください。
+
+## 開発環境
+
+- **VSCode**: 推奨エディタ
+- **拡張機能**: 自動インストール設定済み
+- **フォーマット**: ESLint + Prettier による自動フォーマット
+- **Git**: Husky によるコミット前自動フォーマット
+
+## 参考リンク
+
+- [Electron 公式サイト](https://www.electronjs.org/)
+- [Vite 公式ドキュメント](https://ja.vite.dev/guide/)
+- [React 公式サイト](https://react.dev/)
+- [Tailwind CSS 公式サイト](https://tailwindcss.com/)
+- [shadcn/ui 公式ドキュメント](https://ui.shadcn.com/)
