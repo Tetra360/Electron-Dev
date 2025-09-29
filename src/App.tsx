@@ -1,33 +1,39 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ButtonTab from "./components/ButtonTab";
+import ComboBoxTab from "./components/ComboBoxTab";
+import DataTableTab from "./components/DataTableTab";
+import InputTab from "./components/InputTab";
+import TableTab from "./components/TableTab";
 
 function App() {
-	return (
-		<div className="flex min-h-svh items-center justify-center">
-			<div className="flex flex-col items-center gap-6">
-				{/* ボタンとセレクトを縦方向に並べる */}
-				<Button className="px-8 py-4 text-lg">Click me</Button>
-				<Input />
-				<Select>
-					<SelectTrigger className="w-[200px]">
-						<SelectValue placeholder="Theme" />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectItem value="light">Light</SelectItem>
-						<SelectItem value="dark">Dark</SelectItem>
-						<SelectItem value="system">System</SelectItem>
-					</SelectContent>
-				</Select>
-			</div>
-		</div>
-	);
+  return (
+    <div className="flex min-h-svh justify-center p-8">
+      <Tabs defaultValue="button" className="w-[400px]">
+        <TabsList>
+          <TabsTrigger value="button">ボタン</TabsTrigger>
+          <TabsTrigger value="input">テキストボックス</TabsTrigger>
+          <TabsTrigger value="combobox">コンボボックス</TabsTrigger>
+          <TabsTrigger value="table">テーブル</TabsTrigger>
+          <TabsTrigger value="datatable">データテーブル</TabsTrigger>
+        </TabsList>
+        <TabsContent value="button">
+          <ButtonTab />
+        </TabsContent>
+        <TabsContent value="input">
+          <InputTab />
+        </TabsContent>
+        <TabsContent value="combobox">
+          <ComboBoxTab />
+        </TabsContent>
+        <TabsContent value="table">
+          <TableTab />
+        </TabsContent>
+        <TabsContent value="datatable">
+          <DataTableTab />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
 }
 
 export default App;
