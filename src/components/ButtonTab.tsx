@@ -6,7 +6,7 @@ const ButtonTab = () => {
   return (
     <div className="flex flex-col items-center gap-6">
       <Button className="px-8 py-4 text-lg">Click me</Button>
-      <Button onClick={() => setOpen(true)} className="px-8 py-4 text-lg text-white">
+      <Button onClick={() => setOpen(true)} className="px-8 py-4 text-lg">
         ポップアップ表示
       </Button>
       {open && (
