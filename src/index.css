@@ -74,6 +74,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --theme-color: #3b82f6; /* blue */
+  --theme-color-hover: #2563eb; /* blue-700 */
 }
 
 .dark {
@@ -108,6 +110,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --theme-color: #6366f1; /* indigo */
+  --theme-color-hover: #4338ca; /* indigo-700 */
 }
 
 @layer base {
