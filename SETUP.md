@@ -510,6 +510,8 @@ npm install -D husky lint-staged
 npx husky init
 ```
 
+> git init 後でないと、`.husky/_`は作成されない
+
 ---
 
 ### 7-3 Huskyでのフック設定
@@ -524,7 +526,7 @@ npx lint-staged
 
 ```
 
-シェルスクリプトに権限付与
+linux,macの場合スクリプトに権限付与
 
 ```bash
 chmod +x .husky/pre-commit
