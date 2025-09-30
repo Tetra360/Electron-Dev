@@ -8,7 +8,7 @@ import TableTab from "./components/TableTab";
 function App() {
   return (
     <div className="flex min-h-svh justify-center p-8">
-      <Tabs defaultValue="button" className="w-[400px]">
+      <Tabs defaultValue="button" className="w-full items-center space-y-6">
         <TabsList>
           <TabsTrigger value="button">ボタン</TabsTrigger>
           <TabsTrigger value="input">テキストボックス</TabsTrigger>

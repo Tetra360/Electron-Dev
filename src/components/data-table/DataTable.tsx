@@ -12,7 +12,6 @@ import {
 } from "@tanstack/react-table";
 import * as React from "react";
 
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -21,7 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { X } from "lucide-react";
+import { FilterInput } from "./FilterInput";
 
 export interface DataTableProps<TData, TValue> {
   columns: import("@tanstack/react-table").ColumnDef<TData, TValue>[];
@@ -50,24 +49,20 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
   return (
     <div>
       <div className="flex items-center py-4">
-        <div className="relative w-full">
-          <Input
-            placeholder="Filter emails..."
-            value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-            onChange={(event) => table.getColumn("email")?.setFilterValue(event.target.value)}
-            className="w-full"
-          />
-          {((table.getColumn("email")?.getFilterValue() as string) ?? "") !== "" && (
-            <button
-              type="button"
-              className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-gray-200 hover:bg-gray-300 p-1"
-              onClick={() => table.getColumn("email")?.setFilterValue("")}
-              aria-label="クリア"
-            >
-              <X className="w-4 h-4 text-gray-500" />
-            </button>
-          )}
-        </div>
+        <FilterInput table={table} columnKey="order_id" placeholder="注文ID" className="w-1/4" />
+        <FilterInput
+          table={table}
+          columnKey="customer_name"
+          placeholder="顧客名"
+          className="w-1/4"
+        />
+        <FilterInput table={table} columnKey="region" placeholder="地域" className="w-1/4" />
+        <FilterInput
+          table={table}
+          columnKey="product_name"
+          placeholder="商品名"
+          className="w-1/4"
+        />
       </div>
       <div className="overflow-hidden rounded-md border">
         <Table>

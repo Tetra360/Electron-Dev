@@ -1,0 +1,122 @@
+[
+  {
+    "order_id": "ORD0001",
+    "customer_name": "鈴木一郎",
+    "region": "関東",
+    "order_date": "2024-12-11",
+    "product_name": "ショートパンツ",
+    "color": "ホワイト",
+    "size": "L",
+    "price": 4063,
+    "payment_method": "代引き",
+    "shipping_status": "出荷準備中"
+  },
+  {
+    "order_id": "ORD0002",
+    "customer_name": "松本直樹",
+    "region": "九州",
+    "order_date": "2024-10-21",
+    "product_name": "ショートパンツ",
+    "color": "グレー",
+    "size": "L",
+    "price": 10802,
+    "payment_method": "PayPay",
+    "shipping_status": "配送完了"
+  },
+  {
+    "order_id": "ORD0003",
+    "customer_name": "中村美咲",
+    "region": "関西",
+    "order_date": "2025-09-25",
+    "product_name": "Tシャツ",
+    "color": "ブルー",
+    "size": "XS",
+    "price": 8059,
+    "payment_method": "PayPay",
+    "shipping_status": "出荷準備中"
+  },
+  {
+    "order_id": "ORD0004",
+    "customer_name": "高橋陽子",
+    "region": "九州",
+    "order_date": "2025-09-17",
+    "product_name": "ジーンズ",
+    "color": "ブルー",
+    "size": "L",
+    "price": 14988,
+    "payment_method": "代引き",
+    "shipping_status": "配送中"
+  },
+  {
+    "order_id": "ORD0005",
+    "customer_name": "山本恵",
+    "region": "九州",
+    "order_date": "2024-12-28",
+    "product_name": "ジーンズ",
+    "color": "ブラック",
+    "size": "M",
+    "price": 14931,
+    "payment_method": "銀行振込",
+    "shipping_status": "出荷準備中"
+  },
+  {
+    "order_id": "ORD0006",
+    "customer_name": "小林優",
+    "region": "中部",
+    "order_date": "2025-08-13",
+    "product_name": "ニット",
+    "color": "ホワイト",
+    "size": "S",
+    "price": 5820,
+    "payment_method": "銀行振込",
+    "shipping_status": "配送完了"
+  },
+  {
+    "order_id": "ORD0007",
+    "customer_name": "中村美咲",
+    "region": "海外",
+    "order_date": "2025-06-20",
+    "product_name": "Tシャツ",
+    "color": "ブルー",
+    "size": "XL",
+    "price": 10922,
+    "payment_method": "代引き",
+    "shipping_status": "配送中"
+  },
+  {
+    "order_id": "ORD0008",
+    "customer_name": "小林優",
+    "region": "北海道",
+    "order_date": "2025-02-24",
+    "product_name": "コート",
+    "color": "グレー",
+    "size": "M",
+    "price": 2194,
+    "payment_method": "銀行振込",
+    "shipping_status": "出荷準備中"
+  },
+  {
+    "order_id": "ORD0009",
+    "customer_name": "加藤大輔",
+    "region": "北海道",
+    "order_date": "2025-09-13",
+    "product_name": "スニーカー",
+    "color": "レッド",
+    "size": "XL",
+    "price": 14049,
+    "payment_method": "銀行振込",
+    "shipping_status": "出荷準備中"
+  },
+  {
+    "order_id": "ORD0010",
+    "customer_name": "小林優",
+    "region": "北海道",
+    "order_date": "2025-08-28",
+    "product_name": "ジーンズ",
+    "color": "カーキ",
+    "size": "S",
+    "price": 4464,
+    "payment_method": "クレジットカード",
+    "shipping_status": "出荷準備中"
+  }
+]
