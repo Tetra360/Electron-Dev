@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const InputTab = () => {
   const [isDisabled, setIsDisabled] = useState(false);
+
   return (
     <div className="flex flex-col items-center gap-6">
       <Input placeholder="テキストを入力" />
