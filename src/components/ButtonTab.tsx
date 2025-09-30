@@ -6,7 +6,7 @@ const ButtonTab = () => {
   const [open, setOpen] = useState(false);
   return (
     <div className="flex flex-col items-center gap-6">
-      <Button className="px-8 py-4 text-lg bg-[var(--theme-color)] hover:bg-[var(--theme-color-hover)]">
+      <Button variant="outline" className="px-8 py-4 text-lg">
         Click me
       </Button>
       <Button onClick={() => setOpen(true)} className="px-8 py-4 text-lg">
@@ -25,7 +25,7 @@ const ButtonTab = () => {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
-            <Button className="px-8 py-4 text-lg bg-[var(--theme-color)] hover:bg-[var(--theme-color-hover)]">
+            <Button variant="theme" className="px-8 py-4 text-lg">
               hover
             </Button>
           </TooltipTrigger>
