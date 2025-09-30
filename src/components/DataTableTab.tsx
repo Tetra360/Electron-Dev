@@ -1,6 +1,6 @@
+import { columns, Order } from "@/components/data-table/columns";
+import { DataTable } from "@/components/data-table/DataTable";
 import db from "../../data/db.json";
-import { DataTable } from "./data-table/DataTable";
-import { columns, Order } from "./data-table/columns";
 
 async function getData(): Promise<Order[]> {
   // db.jsonの内容を返す
