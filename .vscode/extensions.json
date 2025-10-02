@@ -1,15 +1,19 @@
 {
-	"recommendations": [
-		// ------ コード品質・フォーマット ------
-		"esbenp.prettier-vscode", // コードフォーマット
-		"dbaeumer.vscode-eslint", // ESLint
-		"bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
+  "recommendations": [
+    // ------ コード品質・フォーマット ------
+    "esbenp.prettier-vscode", // コードフォーマット
+    "dbaeumer.vscode-eslint", // ESLint
+    "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
 
-		// ------ UI・操作性向上 ------
-		"ms-ceintl.vscode-language-pack-ja", // 日本語言語パック
-		"pkief.material-icon-theme", // マテリアルアイコン
-		"oderwat.indent-rainbow", // インデント色分け
-		"usernamehw.errorlens", // エラー表示強化
-		"mosapride.zenkaku" // 全角文字検出
-	]
+    // ------ 開発支援 ------
+    "dsznajder.es7-react-js-snippets", // React/Redux/React-Native/JS/TSスニペット
+    "christian-kohler.path-intellisense", // ファイルパス補完
+
+    // ------ UI・操作性向上 ------
+    "ms-ceintl.vscode-language-pack-ja", // 日本語言語パック
+    "pkief.material-icon-theme", // マテリアルアイコン
+    "oderwat.indent-rainbow", // インデント色分け
+    "usernamehw.errorlens", // エラー表示強化
+    "mosapride.zenkaku" // 全角文字検出
+  ]
 }
