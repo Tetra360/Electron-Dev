@@ -19,14 +19,54 @@ export type Order = {
 };
 
 export const columns: ColumnDef<Order>[] = [
-  { accessorKey: "order_id", header: "注文ID" },
-  { accessorKey: "customer_name", header: "顧客名" },
-  { accessorKey: "region", header: "地域" },
-  { accessorKey: "order_date", header: "注文日" },
-  { accessorKey: "product_name", header: "商品名" },
-  { accessorKey: "color", header: "カラー" },
-  { accessorKey: "size", header: "サイズ" },
-  { accessorKey: "price", header: "金額" },
-  { accessorKey: "payment_method", header: "支払い方法" },
-  { accessorKey: "shipping_status", header: "配送状況" },
+  {
+    accessorKey: "order_id",
+    header: "注文ID",
+    size: 100,
+  },
+  {
+    accessorKey: "customer_name",
+    header: "顧客名",
+    size: 80,
+  },
+  {
+    accessorKey: "region",
+    header: "地域",
+    size: 80,
+  },
+  {
+    accessorKey: "order_date",
+    header: "注文日",
+    size: 100,
+  },
+  {
+    accessorKey: "product_name",
+    header: "商品名",
+    size: 100,
+  },
+  {
+    accessorKey: "color",
+    header: "カラー",
+    size: 80,
+  },
+  {
+    accessorKey: "size",
+    header: "サイズ",
+    size: 60,
+  },
+  {
+    accessorKey: "price",
+    header: "金額",
+    size: 100,
+  },
+  {
+    accessorKey: "payment_method",
+    header: "支払い方法",
+    size: 100,
+  },
+  {
+    accessorKey: "shipping_status",
+    header: "配送状況",
+    size: 120,
+  },
 ];

@@ -24,57 +24,31 @@ function getRegionOptions(data: Order[]): { value: string; label: string }[] {
 }
 
 /**
- * フィルター部分のコンポーネント
- */
-function FilterSection() {
-  const [data, setData] = useState<Order[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getData();
-      setData(result);
-    };
-    fetchData();
-  }, []);
-
-  const table = useDataTable({ columns, data });
-
-  return <FilterManager table={table} data={data} getRegionOptions={getRegionOptions} />;
-}
-
-/**
- * テーブル部分のコンポーネント
- */
-function TableSection() {
-  const [data, setData] = useState<Order[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getData();
-      setData(result);
-    };
-    fetchData();
-  }, []);
-
-  const table = useDataTable({ columns, data });
-
-  return <DataTableContent table={table} columns={columns} />;
-}
-
-/**
  * データテーブルタブのメインコンポーネント
  */
 export default function DataTableTab() {
+  const [data, setData] = useState<Order[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getData();
+      setData(result);
+    };
+    fetchData();
+  }, []);
+
+  const table = useDataTable({ columns, data });
+
   return (
     <div className="flex flex-col items-center gap-6">
       <div className="w-full">
         <h3 className="text-lg font-semibold mb-4">フィルター部分のみ</h3>
-        <FilterSection />
+        <FilterManager table={table} data={data} getRegionOptions={getRegionOptions} />
       </div>
 
       <div className="w-full">
         <h3 className="text-lg font-semibold mb-4">テーブル部分のみ</h3>
-        <TableSection />
+        <DataTableContent table={table} columns={columns} />
       </div>
     </div>
   );

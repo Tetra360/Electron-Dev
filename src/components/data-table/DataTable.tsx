@@ -11,6 +11,8 @@ import {
 } from "@tanstack/react-table";
 import * as React from "react";
 
+import { FilterInput } from "@/components/data-table/FilterInput";
+import "@/components/data-table/scrollbar.css";
 import {
   Table,
   TableBody,
@@ -19,8 +21,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { FilterInput } from "./FilterInput";
-import "./scrollbar.css";
 
 export interface DataTableProps<TData, TValue> {
   columns: import("@tanstack/react-table").ColumnDef<TData, TValue>[];
@@ -55,11 +55,14 @@ export function DataTableContent<TData, TValue>({
   table: import("@tanstack/react-table").Table<TData>;
   columns: import("@tanstack/react-table").ColumnDef<TData, TValue>[];
 }) {
+  // カラムの総幅を計算
+  const totalWidth = columns.reduce((sum, col) => sum + (col.size || 150), 0);
+
   return (
     <div className="rounded-md border overflow-hidden" style={{ height: "60vh" }}>
       {/* 固定ヘッダー */}
       <div className="bg-primary">
-        <Table>
+        <Table style={{ tableLayout: "fixed", width: `${totalWidth}px`, minWidth: "100%" }}>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="bg-primary hover:bg-primary">
@@ -68,6 +71,7 @@ export function DataTableContent<TData, TValue>({
                     <TableHead
                       key={header.id}
                       className="text-primary-foreground font-semibold text-center"
+                      style={{ width: header.column.columnDef.size || header.getSize() }}
                     >
                       {header.isPlaceholder
                         ? null
@@ -88,7 +92,7 @@ export function DataTableContent<TData, TValue>({
           height: "calc(60vh - 60px)",
         }}
       >
-        <Table>
+        <Table style={{ tableLayout: "fixed", width: `${totalWidth}px`, minWidth: "100%" }}>
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row, index) => (
@@ -98,7 +102,11 @@ export function DataTableContent<TData, TValue>({
                   className={index % 2 === 0 ? "bg-background" : "bg-muted/50"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="text-center">
+                    <TableCell
+                      key={cell.id}
+                      className="text-center"
+                      style={{ width: cell.column.columnDef.size || cell.column.getSize() }}
+                    >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}

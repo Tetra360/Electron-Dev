@@ -1,11 +1,17 @@
+import { ComboboxFilter } from "@/components/data-table/ComboboxFilter";
+import { FilterInput } from "@/components/data-table/FilterInput";
+import { Button } from "@/components/ui/button";
 import { Table } from "@tanstack/react-table";
-import { ComboboxFilter } from "./ComboboxFilter";
-import { FilterInput } from "./FilterInput";
 
+// props の型定義
 interface FilterManagerProps<T> {
+  // T 型の行を持つテーブルオブジェクト
   table: Table<T>;
+  // T 型のデータ配列
   data: T[];
+  // 地域オプションを取得する関数
   getRegionOptions: (data: T[]) => { value: string; label: string }[];
+  // クラス名
   className?: string;
 }
 
@@ -23,6 +29,14 @@ export function FilterManager<T>({
   className = "flex items-center py-4 h-8 ",
 }: FilterManagerProps<T>) {
   const regionOptions = getRegionOptions(data);
+
+  // クリアボタンを押したときの処理
+  const clearAllFilters = () => {
+    table.getColumn("order_id")?.setFilterValue("");
+    table.getColumn("customer_name")?.setFilterValue("");
+    table.getColumn("region")?.setFilterValue("");
+    table.getColumn("product_name")?.setFilterValue("");
+  };
 
   return (
     <div className={className}>
@@ -50,7 +64,15 @@ export function FilterManager<T>({
           className="w-30 mr-4"
         />
         <label className="flex items-center justify-center w-18 rounded-sm">商品名</label>
-        <FilterInput table={table} columnKey="product_name" placeholder="商品名" className="w-30" />
+        <FilterInput
+          table={table}
+          columnKey="product_name"
+          placeholder="商品名"
+          className="w-30  mr-4"
+        />
+        <Button variant="outline" onClick={clearAllFilters}>
+          クリア
+        </Button>
       </div>
     </div>
   );
