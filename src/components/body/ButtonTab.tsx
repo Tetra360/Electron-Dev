@@ -1,41 +1,75 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-const ButtonTab = () => {
-  const [open, setOpen] = useState(false);
+
+/**
+ * 基本的なボタンコンポーネント
+ */
+function BasicButton() {
+  return (
+    <Button className="px-8 py-4 text-lg" onClick={() => alert("Click me")}>
+      Click me
+    </Button>
+  );
+}
+
+/**
+ * ダイアログ付きボタンコンポーネント
+ */
+function DialogButton() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline" className="px-8 py-4 text-lg">
+          Open Dialog
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog Description</DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+/**
+ * ツールチップ付きボタンコンポーネント
+ */
+function TooltipButton() {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button variant="theme" className="px-8 py-4 text-lg">
+            hover
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>ライブラリに追加</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+
+/**
+ * ボタンタブのメインコンポーネント
+ */
+export default function ButtonTab() {
   return (
     <div className="flex flex-col items-center gap-6">
-      <Button variant="outline" className="px-8 py-4 text-lg">
-        Click me
-      </Button>
-      <Button onClick={() => setOpen(true)} className="px-8 py-4 text-lg">
-        ポップアップ表示
-      </Button>
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-          <div className="bg-white dark:bg-card rounded-lg shadow-lg p-8 min-w-[300px] flex flex-col items-center text-foreground">
-            <div className="mb-4 text-lg">ポップアップウィンドウです</div>
-            <Button onClick={() => setOpen(false)} className="mt-2">
-              閉じる
-            </Button>
-          </div>
-        </div>
-      )}
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger>
-            <Button variant="theme" className="px-8 py-4 text-lg">
-              hover
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>ライブラリに追加</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <BasicButton />
+      <DialogButton />
+      <TooltipButton />
     </div>
   );
-};
-
-export default ButtonTab;
+}

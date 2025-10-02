@@ -2,6 +2,7 @@ import ButtonTab from "@/components/body/ButtonTab";
 import ComboBoxTab from "@/components/body/ComboBoxTab";
 import DataTableTab from "@/components/body/DataTableTab";
 import InputTab from "@/components/body/InputTab";
+import LabelTab from "@/components/body/LabelTab";
 import StepperTab from "@/components/body/StepperTab";
 import TableTab from "@/components/body/TableTab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -9,9 +10,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 function App() {
   return (
     <div className="flex min-h-svh justify-center p-8">
-      <Tabs defaultValue="button" className="w-full items-center space-y-6">
+      <Tabs defaultValue="button" className="w-full space-y-6 items-center">
         <TabsList>
           <TabsTrigger value="button">ボタン</TabsTrigger>
+          <TabsTrigger value="label">ラベル</TabsTrigger>
           <TabsTrigger value="input">テキストボックス</TabsTrigger>
           <TabsTrigger value="combobox">コンボボックス</TabsTrigger>
           <TabsTrigger value="stepper">ステッパー</TabsTrigger>
@@ -20,6 +22,9 @@ function App() {
         </TabsList>
         <TabsContent value="button">
           <ButtonTab />
+        </TabsContent>
+        <TabsContent value="label">
+          <LabelTab />
         </TabsContent>
         <TabsContent value="input">
           <InputTab />
