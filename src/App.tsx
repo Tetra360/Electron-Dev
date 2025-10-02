@@ -1,10 +1,10 @@
+import ButtonTab from "@/components/body/ButtonTab";
+import ComboBoxTab from "@/components/body/ComboBoxTab";
+import DataTableTab from "@/components/body/DataTableTab";
+import InputTab from "@/components/body/InputTab";
+import StepperTab from "@/components/body/StepperTab";
+import TableTab from "@/components/body/TableTab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ButtonTab from "./components/ButtonTab";
-import ComboBoxTab from "./components/ComboBoxTab";
-import DataTableTab from "./components/DataTableTab";
-import InputTab from "./components/InputTab";
-import StepperTab from "./components/StepperTab";
-import TableTab from "./components/TableTab";
 
 function App() {
   return (
