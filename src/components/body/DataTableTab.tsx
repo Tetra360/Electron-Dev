@@ -1,11 +1,7 @@
 import db from "@/../data/db.json";
 import { columns, Order } from "@/components/data-table/columns";
-import {
-  DataTable,
-  DataTableContent,
-  DataTableFilters,
-  useDataTable,
-} from "@/components/data-table/DataTable";
+import { DataTableContent, useDataTable } from "@/components/data-table/DataTable";
+import { FilterManager } from "@/components/data-table/FilterManager";
 import { useEffect, useState } from "react";
 
 /**
@@ -14,6 +10,17 @@ import { useEffect, useState } from "react";
 async function getData(): Promise<Order[]> {
   // db.jsonの内容を返す
   return db;
+}
+
+/**
+ * 地域の一意な値を取得する関数
+ */
+function getRegionOptions(data: Order[]): { value: string; label: string }[] {
+  const uniqueRegions = [...new Set(data.map((item) => item.region))];
+  return uniqueRegions.map((region) => ({
+    value: region,
+    label: region,
+  }));
 }
 
 /**
@@ -32,7 +39,7 @@ function FilterSection() {
 
   const table = useDataTable({ columns, data });
 
-  return <DataTableFilters table={table} />;
+  return <FilterManager table={table} data={data} getRegionOptions={getRegionOptions} />;
 }
 
 /**
@@ -55,23 +62,6 @@ function TableSection() {
 }
 
 /**
- * 完全なデータテーブルコンポーネント（従来の機能）
- */
-function CompleteDataTable() {
-  const [data, setData] = useState<Order[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getData();
-      setData(result);
-    };
-    fetchData();
-  }, []);
-
-  return <DataTable columns={columns} data={data} />;
-}
-
-/**
  * データテーブルタブのメインコンポーネント
  */
 export default function DataTableTab() {
@@ -85,11 +75,6 @@ export default function DataTableTab() {
       <div className="w-full">
         <h3 className="text-lg font-semibold mb-4">テーブル部分のみ</h3>
         <TableSection />
-      </div>
-
-      <div className="w-full">
-        <h3 className="text-lg font-semibold mb-4">完全なデータテーブル</h3>
-        <CompleteDataTable />
       </div>
     </div>
   );

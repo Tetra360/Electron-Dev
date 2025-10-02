@@ -16,7 +16,7 @@ export function FilterInput<T>({ table, columnKey, placeholder, className }: Fil
         placeholder={placeholder || columnKey}
         value={(table.getColumn(columnKey)?.getFilterValue() as string) ?? ""}
         onChange={(event) => table.getColumn(columnKey)?.setFilterValue(event.target.value)}
-        className="w-full py-3 px-4 text-lg"
+        className="w-full text-lg"
       />
       {((table.getColumn(columnKey)?.getFilterValue() as string) ?? "") !== "" && (
         <button

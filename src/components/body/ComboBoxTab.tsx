@@ -86,9 +86,26 @@ const frameworks = [
   },
 ];
 
-export function ExampleCombobox() {
+interface ComboboxProps {
+  options: { value: string; label: string }[];
+  value?: string;
+  onValueChange?: (value: string) => void;
+  placeholder?: string;
+  searchPlaceholder?: string;
+  emptyText?: string;
+  className?: string;
+}
+
+export function Combobox({
+  options,
+  value = "",
+  onValueChange,
+  placeholder = "選択してください...",
+  searchPlaceholder = "検索...",
+  emptyText = "見つかりませんでした。",
+  className = "w-[200px]",
+}: ComboboxProps) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -97,36 +114,35 @@ export function ExampleCombobox() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className={`${className} justify-between font-normal`}
         >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+          {value ? options.find((option) => option.value === value)?.label : placeholder}
           <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className={`${className} p-0`}>
         <Command>
-          <CommandInput placeholder="Search framework..." />
+          <CommandInput placeholder={searchPlaceholder} />
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandEmpty>{emptyText}</CommandEmpty>
             <CommandGroup>
-              {frameworks.map((framework) => (
+              {options.map((option) => (
                 <CommandItem
-                  key={framework.value}
-                  value={framework.value}
+                  key={option.value}
+                  value={option.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                    const newValue = currentValue === value ? "" : currentValue;
+                    onValueChange?.(newValue);
                     setOpen(false);
                   }}
                 >
                   <CheckIcon
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0"
+                      value === option.value ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {framework.label}
+                  {option.label}
                 </CommandItem>
               ))}
             </CommandGroup>
@@ -134,6 +150,21 @@ export function ExampleCombobox() {
         </Command>
       </PopoverContent>
     </Popover>
+  );
+}
+
+export function ExampleCombobox() {
+  const [value, setValue] = React.useState("");
+
+  return (
+    <Combobox
+      options={frameworks}
+      value={value}
+      onValueChange={setValue}
+      placeholder="Select framework..."
+      searchPlaceholder="Search framework..."
+      emptyText="No framework found."
+    />
   );
 }
 
