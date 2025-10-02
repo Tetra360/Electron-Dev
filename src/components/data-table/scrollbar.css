@@ -1,0 +1,78 @@
+/* ========================================
+   スクロールバーのカスタムスタイル
+   ======================================== */
+
+/* テーマ変数を使用したスクロールバーのスタイル */
+/* プロジェクトのテーマシステムと統合されたスクロールバー */
+.modern-scrollbar {
+  /* Firefox用のスクロールバー設定 */
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-foreground) var(--muted);
+}
+
+/* Webkit系ブラウザ（Chrome、Safari、Edge）用のスクロールバー設定 */
+.modern-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* スクロールバーのトラック（背景）部分 */
+.modern-scrollbar::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 3px;
+}
+
+/* スクロールバーのつまみ（スクロール部分） */
+.modern-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+/* ホバー時のスクロールバーの色 */
+.modern-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+/* アクティブ時のスクロールバーの色 */
+.modern-scrollbar::-webkit-scrollbar-thumb:active {
+  background: var(--primary);
+}
+
+/* ========================================
+   より目立たないスクロールバーのバリアント
+   ======================================== */
+
+/* より控えめで目立たないスクロールバー */
+.subtle-scrollbar {
+  /* Firefox用のスクロールバー設定 */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--background);
+}
+
+/* Webkit系ブラウザ用のスクロールバー設定 */
+.subtle-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* スクロールバーのトラック（背景）部分 */
+.subtle-scrollbar::-webkit-scrollbar-track {
+  background: var(--background);
+  border-radius: 2px;
+}
+
+/* スクロールバーのつまみ（スクロール部分） */
+.subtle-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+/* ホバー時のスクロールバーの色 */
+.subtle-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* アクティブ時のスクロールバーの色 */
+.subtle-scrollbar::-webkit-scrollbar-thumb:active {
+  background: var(--foreground);
+}

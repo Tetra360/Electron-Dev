@@ -27,27 +27,21 @@ export function FilterManager<T>({
   return (
     <div className={className}>
       <div className="flex items-center gap-2 ">
-        <label className="flex items-center justify-center w-18 font-bold bg-gray-500 rounded-sm">
-          注文ID
-        </label>
+        <label className="flex items-center justify-center w-18 rounded-sm">注文ID</label>
         <FilterInput
           table={table}
           columnKey="order_id"
           placeholder="注文ID"
           className="w-30 mr-4"
         />
-        <label className="flex items-center justify-center w-18 font-bold bg-gray-500 rounded-sm">
-          顧客名
-        </label>
+        <label className="flex items-center justify-center w-18 rounded-sm">顧客名</label>
         <FilterInput
           table={table}
           columnKey="customer_name"
           placeholder="顧客名"
           className="w-30 mr-4"
         />
-        <label className="flex items-center justify-center w-18 font-bold bg-gray-500 rounded-sm">
-          地域
-        </label>
+        <label className="flex items-center justify-center w-18 rounded-sm">地域</label>
         <ComboboxFilter
           table={table}
           columnKey="region"
@@ -55,9 +49,7 @@ export function FilterManager<T>({
           placeholder="地域"
           className="w-30 mr-4"
         />
-        <label className="flex items-center justify-center w-18 font-bold bg-gray-500 rounded-sm">
-          商品名
-        </label>
+        <label className="flex items-center justify-center w-18 rounded-sm">商品名</label>
         <FilterInput table={table} columnKey="product_name" placeholder="商品名" className="w-30" />
       </div>
     </div>

@@ -20,6 +20,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { FilterInput } from "./FilterInput";
+import "./scrollbar.css";
 
 export interface DataTableProps<TData, TValue> {
   columns: import("@tanstack/react-table").ColumnDef<TData, TValue>[];
@@ -81,7 +82,12 @@ export function DataTableContent<TData, TValue>({
       </div>
 
       {/* スクロール可能な行部分 */}
-      <div className="overflow-y-auto" style={{ height: "calc(60vh - 60px)" }}>
+      <div
+        className="overflow-y-auto subtle-scrollbar"
+        style={{
+          height: "calc(60vh - 60px)",
+        }}
+      >
         <Table>
           <TableBody>
             {table.getRowModel().rows?.length ? (
