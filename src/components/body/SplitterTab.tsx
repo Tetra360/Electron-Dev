@@ -12,10 +12,13 @@ export default function SplitterTab() {
   return (
     <div className="w-screen h-[80vh] flex flex-col overflow-hidden bg-gray-100 p-8">
       <Splitter
-        leftContent={<div className="text-4xl">左側パネル</div>}
-        rightContent={<div className="text-4xl">右側パネル</div>}
-        initialLeftWidth={40}
-        onResize={(w) => console.log("現在の左幅:", w.toFixed(1) + "%")}
+        contents={[
+          <div className="text-3xl">左パネル</div>,
+          <div className="text-3xl">中央パネル</div>,
+          <div className="text-3xl">右パネル</div>,
+        ]}
+        initialWidths={[30, 40, 30]}
+        onResize={(w) => console.log("現在の幅:", w.map((x) => x.toFixed(1) + "%").join(", "))}
       />
     </div>
   );
