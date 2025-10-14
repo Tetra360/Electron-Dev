@@ -7,6 +7,7 @@ import SplitterTab from "@/components/body/SplitterTab";
 import StepperTab from "@/components/body/StepperTab";
 import TableTab from "@/components/body/TableTab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import TableExample from "@/example/table";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <TabsTrigger value="stepper">ステッパー</TabsTrigger>
           <TabsTrigger value="table">テーブル</TabsTrigger>
           <TabsTrigger value="datatable">データテーブル</TabsTrigger>
+          <TabsTrigger value="table-example">テーブル例</TabsTrigger>
           <TabsTrigger value="splitter">スプリッター</TabsTrigger>
         </TabsList>
         <TabsContent value="button">
@@ -42,6 +44,9 @@ function App() {
         </TabsContent>
         <TabsContent value="datatable">
           <DataTableTab />
+        </TabsContent>
+        <TabsContent value="table-example">
+          <TableExample />
         </TabsContent>
         <TabsContent value="splitter">
           <SplitterTab />

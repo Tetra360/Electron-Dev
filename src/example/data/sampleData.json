@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "田中太郎",
+    "email": "tanaka@example.com",
+    "role": "管理者",
+    "status": "アクティブ",
+    "department": "開発部",
+    "notes": "プロジェクトリーダーとして複数の案件を管理しています。経験豊富で信頼できるメンバーです。"
+  },
+  {
+    "id": 2,
+    "name": "佐藤花子",
+    "email": "sato@example.com",
+    "role": "エディター",
+    "status": "アクティブ",
+    "department": "マーケティング",
+    "notes": "コンテンツ作成に優れたスキルを持っています。"
+  },
+  {
+    "id": 3,
+    "name": "鈴木一郎",
+    "email": "suzuki@example.com",
+    "role": "ビューアー",
+    "status": "保留中",
+    "department": "営業部",
+    "notes": "新規クライアント開拓に注力中。"
+  },
+  {
+    "id": 4,
+    "name": "高橋美咲",
+    "email": "takahashi@example.com",
+    "role": "エディター",
+    "status": "アクティブ",
+    "department": "開発部",
+    "notes": "フロントエンド開発のスペシャリスト。React、Vue.js、Angularなど多数のフレームワークに精通しています。"
+  },
+  {
+    "id": 5,
+    "name": "伊藤健太",
+    "email": "ito@example.com",
+    "role": "ビューアー",
+    "status": "非アクティブ",
+    "department": "人事部",
+    "notes": "休職中"
+  },
+  {
+    "id": 6,
+    "name": "渡辺由美",
+    "email": "watanabe@example.com",
+    "role": "管理者",
+    "status": "アクティブ",
+    "department": "マーケティング",
+    "notes": "デジタルマーケティング戦略の立案と実行を担当。"
+  },
+  {
+    "id": 7,
+    "name": "山本誠",
+    "email": "yamamoto@example.com",
+    "role": "エディター",
+    "status": "アクティブ",
+    "department": "開発部",
+    "notes": "バックエンド開発を担当。"
+  },
+  {
+    "id": 8,
+    "name": "中村麗子",
+    "email": "nakamura@example.com",
+    "role": "ビューアー",
+    "status": "保留中",
+    "department": "営業部",
+    "notes": "研修期間中のため一時的にビューアー権限。"
+  },
+  {
+    "id": 9,
+    "name": "小林直樹",
+    "email": "kobayashi@example.com",
+    "role": "管理者",
+    "status": "アクティブ",
+    "department": "人事部",
+    "notes": "採用と人材育成プログラムの責任者。"
+  },
+  {
+    "id": 10,
+    "name": "加藤美香",
+    "email": "kato@example.com",
+    "role": "エディター",
+    "status": "アクティブ",
+    "department": "営業部",
+    "notes": "提案書作成のエキスパート。"
+  },
+  {
+    "id": 11,
+    "name": "吉田浩二",
+    "email": "yoshida@example.com",
+    "role": "ビューアー",
+    "status": "保留中",
+    "department": "開発部",
+    "notes": "インターンシップ参加中。"
+  },
+  {
+    "id": 12,
+    "name": "山田愛子",
+    "email": "yamada@example.com",
+    "role": "エディター",
+    "status": "アクティブ",
+    "department": "マーケティング",
+    "notes": "SNS運用とコミュニティマネジメントを担当しています。"
+  },
+  {
+    "id": 13,
+    "name": "佐々木翔太",
+    "email": "sasaki@example.com",
+    "role": "ビューアー",
+    "status": "非アクティブ",
+    "department": "人事部",
+    "notes": "長期休暇中"
+  },
+  {
+    "id": 14,
+    "name": "松本結衣",
+    "email": "matsumoto@example.com",
+    "role": "管理者",
+    "status": "アクティブ",
+    "department": "開発部",
+    "notes": "テクニカルアーキテクトとしてシステム全体の設計を監督。"
+  },
+  {
+    "id": 15,
+    "name": "井上健一",
+    "email": "inoue@example.com",
+    "role": "エディター",
+    "status": "アクティブ",
+    "department": "営業部",
+    "notes": "大口顧客を担当。"
+  },
+  {
+    "id": 16,
+    "name": "木村さくら",
+    "email": "kimura@example.com",
+    "role": "ビューアー",
+    "status": "保留中",
+    "department": "マーケティング",
+    "notes": "トライアル期間中。"
+  },
+  {
+    "id": 17,
+    "name": "林大輔",
+    "email": "hayashi@example.com",
+    "role": "エディター",
+    "status": "アクティブ",
+    "department": "人事部",
+    "notes": "社内研修プログラムの企画運営を担当。"
+  },
+  {
+    "id": 18,
+    "name": "斉藤真理",
+    "email": "saito@example.com",
+    "role": "管理者",
+    "status": "アクティブ",
+    "department": "開発部",
+    "notes": "セキュリティとインフラストラクチャの専門家。"
+  },
+  {
+    "id": 19,
+    "name": "清水拓也",
+    "email": "shimizu@example.com",
+    "role": "ビューアー",
+    "status": "非アクティブ",
+    "department": "営業部",
+    "notes": "退職予定"
+  },
+  {
+    "id": 20,
+    "name": "森本奈々",
+    "email": "morimoto@example.com",
+    "role": "エディター",
+    "status": "保留中",
+    "department": "マーケティング",
+    "notes": "ブランド戦略とクリエイティブディレクションに携わっています。"
+  }
+]
