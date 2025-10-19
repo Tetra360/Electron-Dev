@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "鈴木太郎",
+    "email": "tanaka.taro@gmail.com",
+    "role": "VIP会員",
+    "status": "アクティブ",
+    "department": "東京都",
+    "notes": "高額購入者。ユニクロのヘビーユーザー。",
+    "lastPurchaseDate": "2024-01-15"
+  },
+  {
+    "id": 2,
+    "name": "佐藤花子",
+    "email": "sato.hanako@yahoo.co.jp",
+    "role": "一般会員",
+    "status": "アクティブ",
+    "department": "大阪府",
+    "notes": "ファッション好きの若い女性。",
+    "lastPurchaseDate": "2024-01-30"
+  },
+  {
+    "id": 3,
+    "name": "鈴木一郎",
+    "email": "suzuki.ichiro@outlook.com",
+    "role": "一般会員",
+    "status": "アクティブ",
+    "department": "神奈川県",
+    "notes": "ビジネスカジュアルを好む会社員。",
+    "lastPurchaseDate": "2024-01-18"
+  },
+  {
+    "id": 4,
+    "name": "高橋美咲",
+    "email": "takahashi.misaki@hotmail.com",
+    "role": "プレミアム会員",
+    "status": "アクティブ",
+    "department": "愛知県",
+    "notes": "オンラインショッピングの常連客。",
+    "lastPurchaseDate": "2024-02-01"
+  },
+  {
+    "id": 5,
+    "name": "山田次郎",
+    "email": "yamada.jiro@icloud.com",
+    "role": "一般会員",
+    "status": "アクティブ",
+    "department": "福岡県",
+    "notes": "カジュアルウェアを中心に購入。",
+    "lastPurchaseDate": "2024-01-10"
+  },
+  {
+    "id": 6,
+    "name": "伊藤健太",
+    "email": "ito.kenta@docomo.ne.jp",
+    "role": "一般会員",
+    "status": "アクティブ",
+    "department": "北海道",
+    "notes": "アウトドア系の商品を好む。",
+    "lastPurchaseDate": "2024-01-25"
+  },
+  {
+    "id": 7,
+    "name": "渡辺さくら",
+    "email": "watanabe.sakura@softbank.ne.jp",
+    "role": "一般会員",
+    "status": "アクティブ",
+    "department": "宮城県",
+    "notes": "学生向けの商品を中心に購入。",
+    "lastPurchaseDate": "2024-01-28"
+  }
+]

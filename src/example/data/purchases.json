@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "productName": "フリースジャケット",
+    "color": "ネイビー",
+    "price": 2990,
+    "quantity": 1,
+    "totalAmount": 2990,
+    "purchaseDate": "2024-01-15"
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "productName": "ヒートテック インナー",
+    "color": "ブラック",
+    "price": 1490,
+    "quantity": 2,
+    "totalAmount": 2980,
+    "purchaseDate": "2024-01-30"
+  },
+  {
+    "id": 3,
+    "userId": 3,
+    "productName": "ジーンズ スリムフィット",
+    "color": "インディゴ",
+    "price": 3990,
+    "quantity": 1,
+    "totalAmount": 3990,
+    "purchaseDate": "2024-01-18"
+  },
+  {
+    "id": 4,
+    "userId": 4,
+    "productName": "カシミアセーター",
+    "color": "ベージュ",
+    "price": 7990,
+    "quantity": 1,
+    "totalAmount": 7990,
+    "purchaseDate": "2024-02-01"
+  },
+  {
+    "id": 5,
+    "userId": 5,
+    "productName": "ポロシャツ",
+    "color": "ホワイト",
+    "price": 1990,
+    "quantity": 3,
+    "totalAmount": 5970,
+    "purchaseDate": "2024-01-10"
+  },
+  {
+    "id": 6,
+    "userId": 6,
+    "productName": "ダウンジャケット",
+    "color": "ブラック",
+    "price": 5990,
+    "quantity": 1,
+    "totalAmount": 5990,
+    "purchaseDate": "2024-01-25"
+  },
+  {
+    "id": 7,
+    "userId": 7,
+    "productName": "スウェットパンツ",
+    "color": "グレー",
+    "price": 2990,
+    "quantity": 2,
+    "totalAmount": 5980,
+    "purchaseDate": "2024-01-28"
+  },
+  {
+    "id": 8,
+    "userId": 1,
+    "productName": "コットンTシャツ",
+    "color": "ネイビー",
+    "price": 990,
+    "quantity": 5,
+    "totalAmount": 4950,
+    "purchaseDate": "2024-01-20"
+  },
+  {
+    "id": 9,
+    "userId": 2,
+    "productName": "ウールコート",
+    "color": "ブラック",
+    "price": 8990,
+    "quantity": 1,
+    "totalAmount": 8990,
+    "purchaseDate": "2024-01-25"
+  },
+  {
+    "id": 10,
+    "userId": 4,
+    "productName": "レギンス",
+    "color": "ブラック",
+    "price": 1990,
+    "quantity": 2,
+    "totalAmount": 3980,
+    "purchaseDate": "2024-01-28"
+  }
+]

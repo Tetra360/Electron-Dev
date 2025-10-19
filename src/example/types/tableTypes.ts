@@ -49,6 +49,7 @@ export interface ResizingState {
 export interface DataTableProps {
   data: UserData[]; // 表示するデータ
   columns: ColumnDefinition[]; // 列定義
+  onRowSelect?: (userId: number) => void; // 行選択時のコールバック
 }
 
 /** ユーザーデータフォームの型（IDを除く） */

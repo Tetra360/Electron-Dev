@@ -22,7 +22,7 @@ import { DataTableFilters } from "./DataTableFilters";
  * @param data - 表示するデータ配列
  * @param columns - 列定義配列
  */
-export function DataTable({ data, columns }: DataTableProps) {
+export function DataTable({ data, columns, onRowSelect }: DataTableProps) {
   // テーブルデータの状態管理
   const [tableData, setTableData] = useState<UserData[]>(data);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -149,6 +149,10 @@ export function DataTable({ data, columns }: DataTableProps) {
   // 行選択処理
   const handleRowClick = (row: UserData) => {
     setSelectedRow(row);
+    // 外部コールバックを呼び出し
+    if (onRowSelect) {
+      onRowSelect(row.id);
+    }
   };
 
   // 編集ダイアログを開く

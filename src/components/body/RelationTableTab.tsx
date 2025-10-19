@@ -1,26 +1,59 @@
 import Splitter from "@/components/ui/splitter";
 import { DataTable } from "@/example/components/DataTable";
+import {
+  PurchaseData,
+  dataService,
+  purchaseColumnDefinitions,
+  userColumnDefinitions,
+} from "@/example/data";
 import { UserData } from "@/example/types/tableTypes";
 import { useEffect, useState } from "react";
-import {
-  purchaseColumnDefinitions,
-  purchaseData,
-  userColumnDefinitions,
-  userData,
-} from "./relationTableData";
 
 /**
  * リレーションテーブルタブコンポーネント
  * スプリッターを使用して2つのパネルにテーブルを表示する
  */
 export default function RelationTableTab() {
-  // 選択されたユーザーID
-  const [selectedUserId] = useState<number | null>(null);
+  // データの状態管理
+  const [userData, setUserData] = useState<UserData[]>([]);
+  const [purchaseData, setPurchaseData] = useState<PurchaseData[]>([]);
+  const [filteredPurchases, setFilteredPurchases] = useState<PurchaseData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  // 選択されたユーザーに関連する購入情報をフィルタリング
-  const filteredPurchases = selectedUserId
-    ? purchaseData.filter((purchase) => purchase.userId === selectedUserId)
-    : purchaseData;
+  // 選択されたユーザーID
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+
+  // データの初期読み込み
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        const [users, purchases] = await Promise.all([
+          dataService.getUsers(),
+          dataService.getAllPurchases(),
+        ]);
+        setUserData(users);
+        setPurchaseData(purchases);
+        setFilteredPurchases(purchases);
+      } catch (error) {
+        console.error("データの読み込みに失敗しました:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  // 選択されたユーザーIDに基づく購入データのフィルタリング
+  useEffect(() => {
+    if (selectedUserId) {
+      const filtered = purchaseData.filter((purchase) => purchase.userId === selectedUserId);
+      setFilteredPurchases(filtered);
+    } else {
+      setFilteredPurchases(purchaseData);
+    }
+  }, [selectedUserId, purchaseData]);
 
   // ページ読み込み時にoverflowを制御
   useEffect(() => {
@@ -29,6 +62,18 @@ export default function RelationTableTab() {
       document.body.style.overflow = "";
     };
   }, []);
+
+  // ローディング状態の表示
+  if (loading) {
+    return (
+      <div className="w-screen h-[80vh] flex items-center justify-center bg-gray-100">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">データを読み込み中...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-screen h-[80vh] flex flex-col overflow-hidden bg-gray-100 p-4">
@@ -44,10 +89,14 @@ export default function RelationTableTab() {
           // 左パネル: 顧客テーブル
           <div className="w-full h-full p-4">
             <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-700">購入一覧</h3>
+              <h3 className="text-lg font-semibold text-gray-700">顧客一覧</h3>
             </div>
             <div className="h-full">
-              <DataTable data={userData} columns={userColumnDefinitions} />
+              <DataTable
+                data={userData}
+                columns={userColumnDefinitions}
+                onRowSelect={(userId) => setSelectedUserId(userId)}
+              />
             </div>
           </div>,
 
