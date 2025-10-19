@@ -33,7 +33,7 @@ class JsonDataService implements DataService {
    */
   async getUsers(): Promise<UserData[]> {
     try {
-      const response = await fetch("/src/example/data/users.json");
+      const response = await fetch("/src/components/table/data/users.json");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -62,7 +62,7 @@ class JsonDataService implements DataService {
    */
   async getAllPurchases(): Promise<PurchaseData[]> {
     try {
-      const response = await fetch("/src/example/data/purchases.json");
+      const response = await fetch("/src/components/table/data/purchases.json");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

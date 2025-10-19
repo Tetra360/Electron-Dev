@@ -7,8 +7,8 @@ import RelationTableTab from "@/components/body/RelationTableTab";
 import SplitterTab from "@/components/body/SplitterTab";
 import StepperTab from "@/components/body/StepperTab";
 import TableTab from "@/components/body/TableTab";
+import TableExample from "@/components/table/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TableExample from "@/example/table";
 
 function App() {
   return (

@@ -1,12 +1,12 @@
-import Splitter from "@/components/ui/splitter";
-import { DataTable } from "@/example/components/DataTable";
+import { DataTable } from "@/components/table/components/DataTable";
 import {
   PurchaseData,
   dataService,
   purchaseColumnDefinitions,
   userColumnDefinitions,
-} from "@/example/data";
-import { UserData } from "@/example/types/tableTypes";
+} from "@/components/table/data";
+import { UserData } from "@/components/table/types/tableTypes";
+import Splitter from "@/components/ui/splitter";
 import { useEffect, useState } from "react";
 
 /**
