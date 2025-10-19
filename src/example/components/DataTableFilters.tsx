@@ -33,7 +33,6 @@ export function DataTableFilters({
   return (
     <>
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">ユーザー管理</h2>
         {selectedRowName && <div className="text-sm text-gray-600">選択中: {selectedRowName}</div>}
       </div>
 

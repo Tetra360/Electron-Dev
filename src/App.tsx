@@ -3,6 +3,7 @@ import ComboBoxTab from "@/components/body/ComboBoxTab";
 import DataTableTab from "@/components/body/DataTableTab";
 import InputTab from "@/components/body/InputTab";
 import LabelTab from "@/components/body/LabelTab";
+import RelationTableTab from "@/components/body/RelationTableTab";
 import SplitterTab from "@/components/body/SplitterTab";
 import StepperTab from "@/components/body/StepperTab";
 import TableTab from "@/components/body/TableTab";
@@ -22,6 +23,7 @@ function App() {
           <TabsTrigger value="table">テーブル</TabsTrigger>
           <TabsTrigger value="datatable">データテーブル</TabsTrigger>
           <TabsTrigger value="table-example">テーブル例</TabsTrigger>
+          <TabsTrigger value="relation-table">リレーションテーブル</TabsTrigger>
           <TabsTrigger value="splitter">スプリッター</TabsTrigger>
         </TabsList>
         <TabsContent value="button">
@@ -47,6 +49,9 @@ function App() {
         </TabsContent>
         <TabsContent value="table-example">
           <TableExample />
+        </TabsContent>
+        <TabsContent value="relation-table">
+          <RelationTableTab />
         </TabsContent>
         <TabsContent value="splitter">
           <SplitterTab />
