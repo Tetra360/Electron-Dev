@@ -1,18 +1,6 @@
+import { purchaseHandlers, userHandlers } from "../../../api/mock";
+import { PurchaseData } from "../../../api/types";
 import { UserData } from "../types/tableTypes";
-
-/**
- * 購入情報データの型定義
- */
-export interface PurchaseData {
-  id: number;
-  userId: number;
-  productName: string;
-  color: string;
-  price: number;
-  quantity: number;
-  totalAmount: number;
-  purchaseDate: string;
-}
 
 /**
  * データ取得の統一インターフェース
@@ -25,19 +13,16 @@ export interface DataService {
 }
 
 /**
- * JSONファイルからデータを取得するサービス実装
+ * モックサーバーを使用するサービス実装
+ * 新しいモックバックエンドを使用
  */
-class JsonDataService implements DataService {
+class MockDataService implements DataService {
   /**
    * ユーザー一覧を取得する
    */
   async getUsers(): Promise<UserData[]> {
     try {
-      const response = await fetch("/src/components/table/data/users.json");
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return await response.json();
+      return await userHandlers.getUsers();
     } catch (error) {
       console.error("ユーザーデータの取得に失敗しました:", error);
       return [];
@@ -49,8 +34,7 @@ class JsonDataService implements DataService {
    */
   async getPurchasesByUserId(userId: number): Promise<PurchaseData[]> {
     try {
-      const allPurchases = await this.getAllPurchases();
-      return allPurchases.filter((purchase) => purchase.userId === userId);
+      return await purchaseHandlers.getPurchasesByUserId(userId);
     } catch (error) {
       console.error("購入データの取得に失敗しました:", error);
       return [];
@@ -62,11 +46,7 @@ class JsonDataService implements DataService {
    */
   async getAllPurchases(): Promise<PurchaseData[]> {
     try {
-      const response = await fetch("/src/components/table/data/purchases.json");
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return await response.json();
+      return await purchaseHandlers.getPurchases();
     } catch (error) {
       console.error("購入データの取得に失敗しました:", error);
       return [];
@@ -76,9 +56,9 @@ class JsonDataService implements DataService {
 
 /**
  * データサービスのインスタンス
- * 将来的にDBサービスに置き換え可能
+ * モックサーバーを使用
  */
-export const dataService: DataService = new JsonDataService();
+export const dataService: DataService = new MockDataService();
 
 /**
  * ユーザーテーブル用のカラム定義

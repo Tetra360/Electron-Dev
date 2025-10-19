@@ -1,6 +1,7 @@
+import { mockServer } from "@/api/mock";
+import { PurchaseData } from "@/api/types";
 import { DataTable } from "@/components/table/components/DataTable";
 import {
-  PurchaseData,
   dataService,
   purchaseColumnDefinitions,
   userColumnDefinitions,
@@ -30,28 +31,6 @@ export default function RelationTableTab({ autoLoadPurchases = true }: RelationT
 
   // 選択されたユーザーID
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
-
-  // ユーザーデータの初期読み込み
-  useEffect(() => {
-    const loadUserData = async () => {
-      try {
-        setLoading(true);
-        const users = await dataService.getUsers();
-        setUserData(users);
-
-        // 最初のユーザーを選択
-        if (users.length > 0) {
-          setSelectedUserId(users[0].id);
-        }
-      } catch (error) {
-        console.error("ユーザーデータの読み込みに失敗しました:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadUserData();
-  }, []);
 
   // 最初のユーザーが選択された時の購入データ読み込み
   useEffect(() => {
@@ -103,6 +82,32 @@ export default function RelationTableTab({ autoLoadPurchases = true }: RelationT
       document.body.style.overflow = "";
     };
   }, []);
+
+  // コンポーネント表示時にデータを再取得
+  useEffect(() => {
+    const loadUserDataOnMount = async () => {
+      try {
+        setLoading(true);
+
+        // JSONファイルの変更を反映するためにモックサーバーを再読み込み
+        await mockServer.reloadData();
+
+        const users = await dataService.getUsers();
+        setUserData(users);
+
+        // 最初のユーザーを選択
+        if (users.length > 0) {
+          setSelectedUserId(users[0].id);
+        }
+      } catch (error) {
+        console.error("ユーザーデータの読み込みに失敗しました:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadUserDataOnMount();
+  }, []); // 空の依存配列でマウント時のみ実行
 
   // ローディング状態の表示
   if (loading) {
