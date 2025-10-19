@@ -256,7 +256,6 @@ export function DataTable({ data, columns, onRowSelect }: DataTableProps) {
           setVisibleColumns((prev) => ({ ...prev, [columnKey]: visible }));
         }}
         columns={columns}
-        selectedRowName={selectedRow?.name}
       />
 
       <DataTableBody
@@ -283,7 +282,7 @@ export function DataTable({ data, columns, onRowSelect }: DataTableProps) {
           </Button>
           <Button onClick={handleEditClick} disabled={!selectedRow} variant="outline">
             <Edit className="mr-2 h-4 w-4" />
-            選択した行を編集
+            編集
           </Button>
         </div>
       </div>

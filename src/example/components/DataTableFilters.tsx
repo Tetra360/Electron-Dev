@@ -15,7 +15,6 @@ interface DataTableFiltersProps {
   visibleColumns: Record<string, boolean>;
   onColumnVisibilityChange: (columnKey: string, visible: boolean) => void;
   columns: ColumnDefinition[];
-  selectedRowName?: string;
 }
 
 /**
@@ -28,14 +27,9 @@ export function DataTableFilters({
   visibleColumns,
   onColumnVisibilityChange,
   columns,
-  selectedRowName,
 }: DataTableFiltersProps) {
   return (
     <>
-      <div className="flex items-center justify-between">
-        {selectedRowName && <div className="text-sm text-gray-600">選択中: {selectedRowName}</div>}
-      </div>
-
       <div className="flex items-center gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />

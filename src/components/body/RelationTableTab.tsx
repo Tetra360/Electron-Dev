@@ -16,44 +16,52 @@ import { useEffect, useState } from "react";
 export default function RelationTableTab() {
   // データの状態管理
   const [userData, setUserData] = useState<UserData[]>([]);
-  const [purchaseData, setPurchaseData] = useState<PurchaseData[]>([]);
   const [filteredPurchases, setFilteredPurchases] = useState<PurchaseData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false);
 
   // 選択されたユーザーID
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
 
-  // データの初期読み込み
+  // ユーザーデータの初期読み込み
   useEffect(() => {
-    const loadData = async () => {
+    const loadUserData = async () => {
       try {
         setLoading(true);
-        const [users, purchases] = await Promise.all([
-          dataService.getUsers(),
-          dataService.getAllPurchases(),
-        ]);
+        const users = await dataService.getUsers();
         setUserData(users);
-        setPurchaseData(purchases);
-        setFilteredPurchases(purchases);
       } catch (error) {
-        console.error("データの読み込みに失敗しました:", error);
+        console.error("ユーザーデータの読み込みに失敗しました:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    loadData();
+    loadUserData();
   }, []);
 
-  // 選択されたユーザーIDに基づく購入データのフィルタリング
+  // 選択されたユーザーIDに基づく購入データの取得
   useEffect(() => {
-    if (selectedUserId) {
-      const filtered = purchaseData.filter((purchase) => purchase.userId === selectedUserId);
-      setFilteredPurchases(filtered);
-    } else {
-      setFilteredPurchases(purchaseData);
-    }
-  }, [selectedUserId, purchaseData]);
+    const loadPurchaseData = async () => {
+      if (selectedUserId) {
+        try {
+          setPurchaseLoading(true);
+          const purchases = await dataService.getPurchasesByUserId(selectedUserId);
+          setFilteredPurchases(purchases);
+        } catch (error) {
+          console.error("購入データの読み込みに失敗しました:", error);
+          setFilteredPurchases([]);
+        } finally {
+          setPurchaseLoading(false);
+        }
+      } else {
+        // ユーザーが選択されていない場合は空の配列を表示
+        setFilteredPurchases([]);
+      }
+    };
+
+    loadPurchaseData();
+  }, [selectedUserId]);
 
   // ページ読み込み時にoverflowを制御
   useEffect(() => {
@@ -103,20 +111,22 @@ export default function RelationTableTab() {
           // 右パネル: 購入情報テーブル
           <div className="w-full h-full p-4">
             <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-700">
-                購入情報一覧
-                {selectedUserId && (
-                  <span className="text-sm font-normal text-blue-600 ml-2">
-                    (顧客ID: {selectedUserId} の購入履歴)
-                  </span>
-                )}
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-700">購入情報一覧</h3>
             </div>
             <div className="h-full">
-              <DataTable
-                data={filteredPurchases as unknown as UserData[]}
-                columns={purchaseColumnDefinitions}
-              />
+              {purchaseLoading ? (
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
+                    <p className="text-gray-600 text-sm">購入データを読み込み中...</p>
+                  </div>
+                </div>
+              ) : (
+                <DataTable
+                  data={filteredPurchases as unknown as UserData[]}
+                  columns={purchaseColumnDefinitions}
+                />
+              )}
             </div>
           </div>,
         ]}
