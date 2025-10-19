@@ -22,7 +22,7 @@ import { DataTableFilters } from "./DataTableFilters";
  * @param data - 表示するデータ配列
  * @param columns - 列定義配列
  */
-export function DataTable({ data, columns, onRowSelect, initialSelectedUserId }: DataTableProps) {
+export function DataTable({ data, columns, onRowSelect }: DataTableProps) {
   // テーブルデータの状態管理
   const [tableData, setTableData] = useState<UserData[]>(data);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -63,15 +63,12 @@ export function DataTable({ data, columns, onRowSelect, initialSelectedUserId }:
   // 選択された行とダイアログ状態
   const [selectedRow, setSelectedRow] = useState<UserData | null>(null);
 
-  // 初期選択状態の設定
+  // 初期選択状態の設定（先頭行を自動選択）
   useEffect(() => {
-    if (initialSelectedUserId) {
-      const initialRow = tableData.find((user) => user.id === initialSelectedUserId);
-      if (initialRow) {
-        setSelectedRow(initialRow);
-      }
+    if (tableData.length > 0) {
+      setSelectedRow(tableData[0]);
     }
-  }, [initialSelectedUserId, tableData]);
+  }, [tableData]);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState<boolean>(false);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState<boolean>(false);
   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState<boolean>(false);

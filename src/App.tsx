@@ -51,7 +51,7 @@ function App() {
           <TableExample />
         </TabsContent>
         <TabsContent value="relation-table">
-          <RelationTableTab initialSelectedUserId={1} />
+          <RelationTableTab />
         </TabsContent>
         <TabsContent value="splitter">
           <SplitterTab />

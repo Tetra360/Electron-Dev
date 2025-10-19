@@ -13,8 +13,6 @@ import { useEffect, useState } from "react";
  * RelationTableTabコンポーネントのプロップス
  */
 interface RelationTableTabProps {
-  /** 初期選択ユーザーID */
-  initialSelectedUserId?: number | null;
   /** 初期選択時に購入データを自動読み込みするか */
   autoLoadPurchases?: boolean;
 }
@@ -23,18 +21,15 @@ interface RelationTableTabProps {
  * リレーションテーブルタブコンポーネント
  * スプリッターを使用して2つのパネルにテーブルを表示する
  */
-export default function RelationTableTab({
-  initialSelectedUserId = null,
-  autoLoadPurchases = true,
-}: RelationTableTabProps) {
+export default function RelationTableTab({ autoLoadPurchases = true }: RelationTableTabProps) {
   // データの状態管理
   const [userData, setUserData] = useState<UserData[]>([]);
   const [filteredPurchases, setFilteredPurchases] = useState<PurchaseData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false);
 
-  // 選択されたユーザーID（初期値をプロップスから設定）
-  const [selectedUserId, setSelectedUserId] = useState<number | null>(initialSelectedUserId);
+  // 選択されたユーザーID
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
 
   // ユーザーデータの初期読み込み
   useEffect(() => {
@@ -43,6 +38,11 @@ export default function RelationTableTab({
         setLoading(true);
         const users = await dataService.getUsers();
         setUserData(users);
+
+        // 最初のユーザーを選択
+        if (users.length > 0) {
+          setSelectedUserId(users[0].id);
+        }
       } catch (error) {
         console.error("ユーザーデータの読み込みに失敗しました:", error);
       } finally {
@@ -53,16 +53,16 @@ export default function RelationTableTab({
     loadUserData();
   }, []);
 
-  // 初期選択時に購入データを自動読み込み
+  // 最初のユーザーが選択された時の購入データ読み込み
   useEffect(() => {
-    const loadInitialPurchaseData = async () => {
-      if (initialSelectedUserId && autoLoadPurchases) {
+    const loadFirstUserPurchaseData = async () => {
+      if (selectedUserId && autoLoadPurchases) {
         try {
           setPurchaseLoading(true);
-          const purchases = await dataService.getPurchasesByUserId(initialSelectedUserId);
+          const purchases = await dataService.getPurchasesByUserId(selectedUserId);
           setFilteredPurchases(purchases);
         } catch (error) {
-          console.error("初期購入データの読み込みに失敗しました:", error);
+          console.error("最初のユーザーの購入データの読み込みに失敗しました:", error);
           setFilteredPurchases([]);
         } finally {
           setPurchaseLoading(false);
@@ -70,8 +70,8 @@ export default function RelationTableTab({
       }
     };
 
-    loadInitialPurchaseData();
-  }, [initialSelectedUserId, autoLoadPurchases]);
+    loadFirstUserPurchaseData();
+  }, [selectedUserId, autoLoadPurchases]);
 
   // 選択されたユーザーIDに基づく購入データの取得
   useEffect(() => {
@@ -137,7 +137,6 @@ export default function RelationTableTab({
                 data={userData}
                 columns={userColumnDefinitions}
                 onRowSelect={(userId) => setSelectedUserId(userId)}
-                initialSelectedUserId={initialSelectedUserId}
               />
             </div>
           </div>,
