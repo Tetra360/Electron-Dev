@@ -50,6 +50,7 @@ export interface DataTableProps {
   data: UserData[]; // 表示するデータ
   columns: ColumnDefinition[]; // 列定義
   onRowSelect?: (userId: number) => void; // 行選択時のコールバック
+  initialSelectedUserId?: number | null; // 初期選択ユーザーID
 }
 
 /** ユーザーデータフォームの型（IDを除く） */

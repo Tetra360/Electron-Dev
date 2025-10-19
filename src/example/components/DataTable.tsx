@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Edit, Plus } from "lucide-react";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ColumnDefinition,
   DataTableProps,
@@ -22,7 +22,7 @@ import { DataTableFilters } from "./DataTableFilters";
  * @param data - 表示するデータ配列
  * @param columns - 列定義配列
  */
-export function DataTable({ data, columns, onRowSelect }: DataTableProps) {
+export function DataTable({ data, columns, onRowSelect, initialSelectedUserId }: DataTableProps) {
   // テーブルデータの状態管理
   const [tableData, setTableData] = useState<UserData[]>(data);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -62,6 +62,16 @@ export function DataTable({ data, columns, onRowSelect }: DataTableProps) {
 
   // 選択された行とダイアログ状態
   const [selectedRow, setSelectedRow] = useState<UserData | null>(null);
+
+  // 初期選択状態の設定
+  useEffect(() => {
+    if (initialSelectedUserId) {
+      const initialRow = tableData.find((user) => user.id === initialSelectedUserId);
+      if (initialRow) {
+        setSelectedRow(initialRow);
+      }
+    }
+  }, [initialSelectedUserId, tableData]);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState<boolean>(false);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState<boolean>(false);
   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState<boolean>(false);
